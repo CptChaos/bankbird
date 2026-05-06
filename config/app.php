@@ -127,4 +127,6 @@ return [
 
     'demo_host' => env('DEMO_HOST', 'demo.bankbird.app'),
 
+    'home_host' => env('HOME_HOST', 'bankbird.app'),
+
 ];

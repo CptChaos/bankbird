@@ -1,8 +1,9 @@
 <?php
 
+use App\Support\Demo;
 use Illuminate\Support\Facades\Route;
 
-if (! \App\Support\Demo::active()) {
+if (Demo::isMarketingSite()) {
     Route::get('/', fn () => view('welcome'));
     Route::get('/install', fn () => view('install'));
     Route::get('/docs', fn () => view('docs'));
