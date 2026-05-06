@@ -10,6 +10,7 @@ use App\Models\Merchant;
 use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -63,11 +64,8 @@ class DemoSeeder extends Seeder
         Account::recalculateBalance($spaar->id);
     }
 
-    /**
-     * @param  array<string, Category>  $categories
-     * @return array<string, Merchant>
-     */
-    private function seedMerchants(array $categories): array
+    /** @return array<string, Merchant> */
+    private function seedMerchants(EloquentCollection $categories): array
     {
         $definitions = [
             ['name' => 'Albert Heijn',       'cat' => 'Boodschappen',    'logo' => 'https://logo.clearbit.com/ah.nl',              'patterns' => ['albert heijn', 'ah.nl']],
@@ -109,16 +107,13 @@ class DemoSeeder extends Seeder
         return $result;
     }
 
-    /**
-     * @param  array<string, Merchant>  $merchants
-     * @param  array<string, Category>  $categories
-     */
+    /** @param array<string, Merchant> $merchants */
     private function generateTransactions(
         User $user,
         Account $betaal,
         Account $spaar,
         array $merchants,
-        array $categories,
+        EloquentCollection $categories,
     ): void {
         $start = Carbon::create(2025, 11, 1);
         $end = Carbon::create(2026, 4, 30);
@@ -130,16 +125,13 @@ class DemoSeeder extends Seeder
         }
     }
 
-    /**
-     * @param  array<string, Merchant>  $merchants
-     * @param  array<string, Category>  $categories
-     */
+    /** @param array<string, Merchant> $merchants */
     private function createMonthTransactions(
         User $user,
         Account $betaal,
         Account $spaar,
         array $merchants,
-        array $categories,
+        EloquentCollection $categories,
         Carbon $month,
         Carbon $now,
     ): void {
