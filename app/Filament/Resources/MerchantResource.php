@@ -93,6 +93,7 @@ class MerchantResource extends Resource
             ->columns([
                 ImageColumn::make('logo_url')
                     ->label('Logo')
+                    ->disk(null)
                     ->imageHeight(28)
                     ->square()
                     ->extraImgAttributes(['class' => 'object-contain']),

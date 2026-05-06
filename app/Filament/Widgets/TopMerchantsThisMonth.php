@@ -48,6 +48,7 @@ class TopMerchantsThisMonth extends BaseWidget
             ->columns([
                 ImageColumn::make('logo_url')
                     ->label('')
+                    ->disk(null)
                     ->imageHeight(24)
                     ->square()
                     ->extraImgAttributes(['class' => 'object-contain'])
