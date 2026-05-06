@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-if (! config('app.demo_mode', false)) {
+if (! \App\Support\Demo::active()) {
     Route::get('/', fn () => view('welcome'));
     Route::get('/install', fn () => view('install'));
     Route::get('/docs', fn () => view('docs'));

@@ -135,7 +135,7 @@ class BackupPage extends Page
 
     private function performRestore(): void
     {
-        if (config('app.demo_mode', false)) {
+        if (\App\Support\Demo::active()) {
             Notification::make()
                 ->warning()
                 ->title('Demo-modus')

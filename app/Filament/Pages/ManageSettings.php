@@ -152,7 +152,7 @@ class ManageSettings extends Page
 
     public function save(): void
     {
-        if (config('app.demo_mode', false)) {
+        if (\App\Support\Demo::active()) {
             Notification::make()
                 ->warning()
                 ->title('Demo-modus')

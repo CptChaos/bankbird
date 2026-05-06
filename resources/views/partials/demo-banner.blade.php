@@ -1,4 +1,4 @@
-@if(config('app.demo_mode', false))
+@if(\App\Support\Demo::active())
     <div
         x-data="{ visible: true }"
         x-show="visible"

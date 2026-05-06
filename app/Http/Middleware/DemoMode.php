@@ -10,7 +10,7 @@ class DemoMode
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (! config('app.demo_mode', false)) {
+        if (! \App\Support\Demo::active()) {
             return $next($request);
         }
 

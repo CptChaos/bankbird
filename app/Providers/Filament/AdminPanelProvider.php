@@ -62,7 +62,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path(config('app.demo_mode', false) ? '' : 'admin')
+            ->path(\App\Support\Demo::active() ? '' : 'admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login(Login::class)
             ->profile(EditProfile::class, isSimple: false)

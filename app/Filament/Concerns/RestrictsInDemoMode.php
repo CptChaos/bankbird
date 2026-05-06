@@ -8,21 +8,21 @@ trait RestrictsInDemoMode
 {
     public static function canCreate(): bool
     {
-        return ! config('app.demo_mode', false);
+        return ! \App\Support\Demo::active();
     }
 
     public static function canEdit(Model $record): bool
     {
-        return ! config('app.demo_mode', false);
+        return ! \App\Support\Demo::active();
     }
 
     public static function canDelete(Model $record): bool
     {
-        return ! config('app.demo_mode', false);
+        return ! \App\Support\Demo::active();
     }
 
     public static function canDeleteAny(): bool
     {
-        return ! config('app.demo_mode', false);
+        return ! \App\Support\Demo::active();
     }
 }
