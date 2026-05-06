@@ -6,13 +6,14 @@ use App\Filament\Concerns\RestrictsInDemoMode;
 use App\Filament\Resources\MerchantResource\Pages;
 use App\Models\Merchant;
 use App\Services\MerchantPatternService;
-use Filament\Actions\Action;
+use App\Support\Demo;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -129,6 +130,12 @@ class MerchantResource extends Resource
                     ->icon('heroicon-o-arrow-path')
                     ->color('gray')
                     ->action(function (Merchant $record) {
+                        if (Demo::active()) {
+                            Notification::make()->warning()->title('Demo-modus')->body('Synchroniseren is uitgeschakeld in de demo.')->send();
+
+                            return;
+                        }
+
                         $count = app(MerchantPatternService::class)->syncMerchant($record);
 
                         Notification::make()

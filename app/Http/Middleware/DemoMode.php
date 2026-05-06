@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Support\Demo;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,7 +11,7 @@ class DemoMode
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (! \App\Support\Demo::active()) {
+        if (! Demo::active()) {
             return $next($request);
         }
 
@@ -23,9 +24,7 @@ class DemoMode
         }
 
         if ($request->hasHeader('X-Livewire')) {
-            return response()->json([
-                'effects' => ['redirect' => url()->previous('/admin')],
-            ]);
+            return $next($request);
         }
 
         return redirect()->back();
