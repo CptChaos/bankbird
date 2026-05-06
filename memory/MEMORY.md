@@ -1,0 +1,1 @@
+- [BankBird public website](project_bankbird_site.md) — Public landing + install + docs + demo pages added May 2026

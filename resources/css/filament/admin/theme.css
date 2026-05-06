@@ -1,0 +1,773 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+/*
+ * BankBird — Consumer Fintech Theme
+ * Palette:
+ *   Deep navy    #0B1F3A   Friendly blue #1E88E5   Sky blue  #EAF6FF
+ *   Fresh green  #16C784   Warm orange   #FF8A3D
+ *   Page bg      #EEF5FB   Border        #DDEAF3   Muted text  #667085
+ *
+ * NOTE: Filament v5 sidebar nav item class is `.fi-sidebar-item-btn`
+ *       (not `.fi-sidebar-item-button`). Active state lives on the
+ *       parent <li class="fi-sidebar-item fi-active">.
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* BASE                                                                    */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-body {
+    background-color: #EEF5FB;
+    font-size: 0.875rem;
+    color: #0B1F3A;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* TOPBAR — logo lives here, in the white bar                             */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-topbar nav {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DDEAF3;
+    box-shadow: 0 1px 8px rgba(11, 31, 58, 0.06);
+}
+
+/* Logo in topbar: breedte automatisch, hoogte via brandLogoHeight instelling */
+.fi-topbar .fi-topbar-start .fi-logo {
+    width: auto;
+    display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* SIDEBAR — dark navy, no separate logo header (logo is in topbar)       */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-sidebar {
+    background-color: #0B1F3A;
+    border-right: none;
+    box-shadow: 3px 0 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide the sidebar's own logo area — the topbar already shows the logo */
+.fi-sidebar-header {
+    display: none !important;
+}
+
+.fi-sidebar-nav-groups {
+    padding: 0.375rem 0;
+    gap: 0 !important;
+}
+
+.fi-sidebar-group-btn {
+    padding: 0.2rem 1rem !important;
+}
+
+/* Group labels (FINANCIËN, BEHEER, RAPPORTEN) */
+.fi-sidebar-group-label {
+    color: rgba(255, 255, 255, 0.35) !important;
+    font-weight: 700;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding-top: 0.875rem;
+}
+
+/* ─── Nav items: correct class is fi-sidebar-item-btn ──────────────────── */
+
+.fi-sidebar-item-btn {
+    font-size: 0.825rem !important;
+    padding: 0.5rem 1rem !important;
+    border-left: 3px solid transparent !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.625rem !important;
+    color: rgba(255, 255, 255, 0.72) !important;
+    transition: background-color 0.12s ease, color 0.12s ease !important;
+    text-decoration: none !important;
+}
+
+/* Label text inside the button */
+.fi-sidebar-item-label {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Icons */
+.fi-sidebar-item-icon {
+    width: 1rem !important;
+    height: 1rem !important;
+    color: rgba(255, 255, 255, 0.45) !important;
+    flex-shrink: 0;
+}
+
+/* ─── Active state: fi-active is on the <li>, not the <a> ───────────────── */
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    background-color: rgba(30, 136, 229, 0.18) !important;
+    border-left-color: #1E88E5 !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-label {
+    color: #FFFFFF !important;
+}
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-icon {
+    color: #5BB8FF !important;
+}
+
+/* ─── Hover ─────────────────────────────────────────────────────────────── */
+
+.fi-sidebar-item:not(.fi-active) .fi-sidebar-item-btn:hover {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    border-left-color: rgba(30, 136, 229, 0.4) !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.fi-sidebar-item:not(.fi-active) .fi-sidebar-item-btn:hover .fi-sidebar-item-label {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.fi-sidebar-item:not(.fi-active) .fi-sidebar-item-btn:hover .fi-sidebar-item-icon {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* ─── Sidebar footer ────────────────────────────────────────────────────── */
+
+.ma-sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.28);
+}
+
+.ma-sidebar-footer a {
+    color: rgba(255, 255, 255, 0.28);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.ma-sidebar-footer a:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* PAGE HEADER                                                             */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Breadcrumb separator en afstand */
+.fi-header,
+.fi-simple-page-header,
+.fi-main-header {
+    padding-bottom: 0.875rem;
+}
+
+.fi-header-heading {
+    font-size: 1.625rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #0B1F3A;
+}
+
+.fi-header-subheading {
+    color: #667085;
+    font-size: 0.875rem;
+    margin-top: 0.125rem;
+}
+
+/* Breadcrumb links */
+.fi-breadcrumbs ol li a {
+    color: #1E88E5;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.12s ease;
+}
+
+.fi-breadcrumbs ol li a:hover {
+    color: #1565C0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* STAT CARDS — bold gradient, consumer-friendly                          */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-wi-stats-overview {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.fi-wi-stats-overview-stat {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(11, 31, 58, 0.14);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    padding: 1.375rem !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.fi-wi-stats-overview-stat::after {
+    content: '';
+    position: absolute;
+    top: -25%;
+    right: -8%;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.09);
+    pointer-events: none;
+}
+
+.fi-wi-stats-overview-stat:hover {
+    box-shadow: 0 10px 32px rgba(11, 31, 58, 0.22);
+    transform: translateY(-3px);
+}
+
+.fi-wi-stats-overview-stat:nth-child(4n + 1) { background: linear-gradient(135deg, #1E88E5 0%, #1256B0 100%); }
+.fi-wi-stats-overview-stat:nth-child(4n + 2) { background: linear-gradient(135deg, #16C784 0%, #0A9660 100%); }
+.fi-wi-stats-overview-stat:nth-child(4n + 3) { background: linear-gradient(135deg, #FF8A3D 0%, #D85E10 100%); }
+.fi-wi-stats-overview-stat:nth-child(4n + 4) { background: linear-gradient(135deg, #1E3A5F 0%, #0B1F3A 100%); }
+
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-value {
+    font-size: 1.75rem !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    letter-spacing: -0.025em;
+}
+
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label {
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.68) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-description {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55) !important;
+    margin-top: 0.25rem;
+}
+
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-icon {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* SECTIONS / PANELS                                                       */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-section:not(.fi-section-not-contained) {
+    background-color: #FFFFFF;
+    border: 1px solid #DDEAF3;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(11, 31, 58, 0.07);
+}
+
+.fi-section-header {
+    background-color: #F7FBFF;
+    border-bottom: 1px solid #DDEAF3;
+    border-radius: 1rem 1rem 0 0;
+    padding: 0.875rem 1.25rem;
+}
+
+.fi-section-header-heading {
+    color: #0B1F3A;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* TABLE WIDGET                                                            */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-ta-ctn {
+    background-color: #FFFFFF;
+    border: 1px solid #DDEAF3;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(11, 31, 58, 0.07);
+    overflow: hidden;
+}
+
+.fi-ta-header {
+    background-color: #F7FBFF;
+    border-bottom: 1px solid #DDEAF3;
+}
+
+.fi-wi {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.fi-ta-header-cell {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #667085;
+    background-color: #F7FBFF;
+}
+
+.fi-ta-row td {
+    font-size: 0.8125rem;
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.7rem !important;
+}
+
+.fi-ta-row:nth-child(even) td {
+    background-color: #FAFCFF;
+}
+
+.fi-ta-row:hover td {
+    background-color: #EEF5FB !important;
+}
+
+table td,
+table th,
+.fi-ta-row td,
+.fi-ta-header-cell {
+    border-color: #E5EEF7 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* BADGES                                                                  */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-badge {
+    border-radius: 99px !important;
+    font-size: 0.6875rem !important;
+    font-weight: 600 !important;
+    padding: 0.2rem 0.7rem !important;
+}
+
+.fi-badge.fi-color-success,
+.fi-badge[class*='success'] {
+    background-color: #EAFBF4 !important;
+    color: #0A9660 !important;
+    border-color: #9EEACB !important;
+}
+
+.fi-badge.fi-color-warning,
+.fi-badge[class*='warning'] {
+    background-color: #FFF3EA !important;
+    color: #C45E12 !important;
+    border-color: #FFCCA0 !important;
+}
+
+.fi-badge.fi-color-primary,
+.fi-badge[class*='primary'],
+.fi-badge.fi-color-info,
+.fi-badge[class*='info'] {
+    background-color: #EAF6FF !important;
+    color: #1360AA !important;
+    border-color: #9ED0F5 !important;
+}
+
+.fi-badge.fi-color-danger,
+.fi-badge[class*='danger'] {
+    background-color: #FFF0F0 !important;
+    color: #BE2929 !important;
+    border-color: #F3AEAE !important;
+}
+
+.fi-badge.fi-color-gray,
+.fi-badge[class*='gray'],
+.fi-badge[class*='secondary'] {
+    background-color: #F0F6FC !important;
+    color: #667085 !important;
+    border-color: #DDEAF3 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* AMOUNT COLOURS                                                          */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.text-success-600,
+[class*='text-green'] {
+    color: #0A9660 !important;
+}
+
+[class*='text-red'],
+.text-danger-600 {
+    color: #D02B2B !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* BUTTONS                                                                 */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/*
+ * Filament v5 injecteert kleuren via CSS-variabelen (--bg, --text) als
+ * inline style per knop — er zijn GEEN klasse-namen per kleur.
+ * We gebruiken color-mix() om automatisch een gradient te berekenen op
+ * basis van de eigen knopkleur, zodat één regel alle kleuren dekt.
+ */
+
+.fi-btn {
+    border-radius: 0.625rem !important;
+    font-weight: 600 !important;
+    transition: box-shadow 0.15s ease, transform 0.15s ease !important;
+    letter-spacing: 0.01em;
+}
+
+.fi-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Gekleurde gevulde knoppen — gradient van knopkleur naar 35% donkerder */
+.fi-btn.fi-color:not(.fi-outlined):not(label) {
+    background: linear-gradient(
+        135deg,
+        var(--bg) 0%,
+        color-mix(in srgb, var(--bg) 65%, black) 100%
+    ) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--bg) 45%, transparent) !important;
+}
+
+/* Hover: diepere schaduw in de eigen knopkleur */
+.fi-btn.fi-color:not(.fi-outlined):not(label):not(.fi-disabled):not([disabled]):hover {
+    box-shadow: 0 7px 22px color-mix(in srgb, var(--bg) 65%, transparent) !important;
+}
+
+/* Iconen binnen gekleurde gevulde knoppen → altijd wit */
+.fi-btn.fi-color:not(.fi-outlined):not(label) .fi-icon,
+.fi-btn.fi-color:not(.fi-outlined):not(label) svg {
+    color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* FORM INPUTS                                                             */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-input,
+.fi-fo-field-wrp input,
+.fi-fo-field-wrp select,
+.fi-fo-field-wrp textarea {
+    border-color: #DDEAF3 !important;
+    border-radius: 0.625rem !important;
+    background-color: #FFFFFF !important;
+    color: #0B1F3A;
+}
+
+.fi-input:focus,
+.fi-fo-field-wrp input:focus,
+.fi-fo-field-wrp select:focus,
+.fi-fo-field-wrp textarea:focus {
+    border-color: #1E88E5 !important;
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.14) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* APEX CHARTS                                                             */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.fi-wi-chart {
+    background-color: #FFFFFF;
+    border: 1px solid #DDEAF3;
+    border-top: 3px solid #1E88E5;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(11, 31, 58, 0.07);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.fi-wi-chart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(11, 31, 58, 0.14);
+}
+
+/* Chart widget header-gebied (titel, filters) */
+.fi-wi-chart-header {
+    background: linear-gradient(135deg, #F7FBFF 0%, #EAF6FF 100%);
+    border-bottom: 1px solid #DDEAF3;
+    padding: 1rem 1.25rem 0.875rem;
+}
+
+.fi-wi-chart-heading {
+    font-weight: 700;
+    color: #0B1F3A;
+    font-size: 0.9375rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* RAPPORT STAT CARDS — zelfde stijl als dashboard stat cards             */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.bb-report-card {
+    border-radius: 1rem;
+    padding: 1.375rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(11, 31, 58, 0.14);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.bb-report-card:hover {
+    box-shadow: 0 10px 32px rgba(11, 31, 58, 0.22);
+    transform: translateY(-3px);
+}
+
+.bb-report-card-circle {
+    position: absolute;
+    top: -25%;
+    right: -8%;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.09);
+    pointer-events: none;
+}
+
+.bb-report-card-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.bb-report-card-label {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.375rem;
+}
+
+.bb-report-card-value {
+    color: #ffffff;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.bb-gradient-blue   { background: linear-gradient(135deg, #1E88E5 0%, #1256B0 100%); }
+.bb-gradient-green  { background: linear-gradient(135deg, #16C784 0%, #0A9660 100%); }
+.bb-gradient-orange { background: linear-gradient(135deg, #FF8A3D 0%, #D85E10 100%); }
+.bb-gradient-navy   { background: linear-gradient(135deg, #1E3A5F 0%, #0B1F3A 100%); }
+
+/* ─── Merchant cards in categorie-overzicht ─────────────────────────────── */
+
+.bb-merchant-card {
+    background: #FFFFFF;
+    border: 1px solid #DDEAF3;
+    border-left: 3px solid #1E88E5;
+    border-radius: 1rem;
+    padding: 1.125rem;
+    box-shadow: 0 2px 12px rgba(11, 31, 58, 0.07);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.bb-merchant-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(11, 31, 58, 0.12);
+}
+
+/* ─── Backup pagina ──────────────────────────────────────────────────────── */
+
+.bb-backup-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.625rem;
+    flex-shrink: 0;
+}
+
+.bb-backup-icon-blue {
+    background-color: #EAF6FF;
+    color: #1E88E5;
+}
+
+.bb-backup-icon-amber {
+    background-color: #FFF3E0;
+    color: #E65100;
+}
+
+.bb-backup-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bb-backup-description {
+    font-size: 0.875rem;
+    color: #374151;
+    line-height: 1.65;
+}
+
+.bb-backup-description strong {
+    color: #0B1F3A;
+    font-weight: 600;
+}
+
+.bb-backup-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #EAF6FF;
+    border: 1px solid #BAD9F7;
+    border-radius: 0.625rem;
+    font-size: 0.8125rem;
+    color: #1360AA;
+    line-height: 1.5;
+}
+
+/* ─── Rapport tabellen ───────────────────────────────────────────────────── */
+
+.bb-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.bb-report-table thead tr {
+    background: linear-gradient(135deg, #F7FBFF 0%, #EAF6FF 100%);
+}
+
+.bb-report-table th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #667085;
+    border-bottom: 1px solid #DDEAF3;
+}
+
+.bb-report-table th.text-right { text-align: right; }
+
+.bb-report-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #F0F6FC;
+    color: #0B1F3A;
+    vertical-align: middle;
+}
+
+.bb-report-table td.text-right { text-align: right; }
+
+.bb-report-table tbody tr {
+    transition: background-color 0.12s ease;
+    cursor: pointer;
+}
+
+.bb-report-table tbody tr:hover td {
+    background-color: #EEF5FB;
+}
+
+.bb-report-table tfoot tr {
+    background: linear-gradient(135deg, #F7FBFF 0%, #EAF6FF 100%);
+    border-top: 2px solid #DDEAF3;
+}
+
+.bb-report-table tfoot td {
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-bottom: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* LOGIN PAGE — two-column layout                                          */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.bb-login-outer {
+    display: flex;
+    min-height: 100dvh;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+    padding: 2rem 1rem;
+}
+
+.bb-login-container {
+    display: flex;
+    width: 100%;
+    max-width: 960px;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+/* Left: form card */
+.bb-login-form-card {
+    flex: 1 1 420px;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+    ring: 1px solid rgba(9, 9, 11, 0.05);
+    border: 1px solid rgba(9, 9, 11, 0.05);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bb-login-form-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Prevent logo image from stretching full-width in the column flex container */
+.bb-login-form-inner .fi-logo {
+    width: auto;
+    align-self: flex-start;
+}
+
+/* Right: image card — hidden on mobile, shown on md+ */
+.bb-login-image-card {
+    display: none;
+    flex: 1 1 420px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
+    min-height: 480px;
+}
+
+@media (min-width: 768px) {
+    .bb-login-image-card {
+        display: block;
+    }
+}
+
+.bb-login-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bb-login-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.75rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.70) 0%, transparent 100%);
+}
+
+.bb-login-caption-text {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}

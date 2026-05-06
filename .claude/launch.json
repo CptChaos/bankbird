@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bankbird",
+      "runtimeExecutable": "C:\\Users\\micha\\.config\\herd\\bin\\php.bat",
+      "runtimeArgs": ["artisan", "serve", "--port=8080"],
+      "port": 8080
+    }
+  ]
+}
