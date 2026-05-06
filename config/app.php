@@ -123,4 +123,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'demo_mode' => env('DEMO_MODE', false),
+
+    'demo_host' => env('DEMO_HOST', 'demo.bankbird.app'),
+
 ];

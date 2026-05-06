@@ -6,6 +6,7 @@ use App\Filament\Pages\Auth\Login;
 use App\Filament\Pages\BackupPage;
 use App\Filament\Pages\EditProfile;
 use App\Filament\Pages\ManageSettings;
+use App\Http\Middleware\DemoMode;
 use App\Models\AppSetting;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Http\Middleware\Authenticate;
@@ -42,7 +43,7 @@ class AdminPanelProvider extends PanelProvider
 
     private function resolveLogoHeight(): string
     {
-        return rescue(fn () => AppSetting::current()->logo_height, '2rem', false) ?? '2rem';
+        return rescue(fn () => AppSetting::current()->logo_height, '4rem', false) ?? '4rem';
     }
 
     private function resolveFavicon(): ?string
@@ -53,7 +54,7 @@ class AdminPanelProvider extends PanelProvider
             return Storage::disk('public')->url($faviconPath);
         }
 
-        return null;
+        return asset('images/bird.png');
     }
 
     public function panel(Panel $panel): Panel
@@ -61,7 +62,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path(\App\Support\Demo::active() ? '' : 'admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login(Login::class)
             ->profile(EditProfile::class, isSimple: false)
@@ -93,6 +94,10 @@ class AdminPanelProvider extends PanelProvider
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_END,
                 fn () => view('partials.sidebar-footer'),
+            )
+            ->renderHook(
+                PanelsRenderHook::BODY_START,
+                fn () => view('partials.demo-banner'),
             )
             ->renderHook(
                 PanelsRenderHook::BODY_END,
@@ -164,6 +169,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                DemoMode::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
