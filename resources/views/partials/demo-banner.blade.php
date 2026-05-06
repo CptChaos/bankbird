@@ -2,28 +2,86 @@
     <div
         x-data="{ visible: true }"
         x-show="visible"
-        x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100 max-h-16"
-        x-transition:leave-end="opacity-0 max-h-0"
-        class="relative z-50 w-full overflow-hidden"
-        style="background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%); border-bottom: 1px solid #d97706;"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        style="
+            background: linear-gradient(90deg, #0D47A1 0%, #1565C0 45%, #1E88E5 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.875rem;
+            position: relative;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            box-shadow: 0 2px 12px rgba(13,71,161,0.25);
+        "
     >
-        <div class="flex items-center justify-center gap-x-3 px-6 py-2.5 text-sm font-medium text-amber-900">
-            <svg style="width:1rem;height:1rem;flex-shrink:0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-            </svg>
-            <span>
-                <strong>Demo-modus</strong> &mdash; Je bekijkt een live voorbeeld van BankBird met nep-data. Wijzigingen zijn uitgeschakeld.
-            </span>
-            <button
-                @click="visible = false"
-                class="absolute right-4 top-1/2 -translate-y-1/2 rounded p-0.5 opacity-70 transition hover:opacity-100"
-                aria-label="Sluiten"
-            >
-                <svg style="width:1rem;height:1rem" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
+        {{-- Bird icon --}}
+        <img
+            src="{{ asset('images/bird.png') }}"
+            alt=""
+            style="height:28px;width:auto;filter:brightness(0) invert(1);opacity:0.9;flex-shrink:0;"
+        >
+
+        {{-- Message --}}
+        <span style="color:rgba(255,255,255,0.92);font-size:0.8125rem;font-weight:500;line-height:1.4;">
+            <strong style="font-weight:700;color:white;">Demo-modus</strong>
+            &mdash; Je bekijkt BankBird met voorbeelddata. Inloggen kan, wijzigingen niet.
+        </span>
+
+        {{-- CTA --}}
+        <a
+            href="{{ url('/install') }}"
+            style="
+                display: inline-flex;
+                align-items: center;
+                gap: 0.3rem;
+                background: white;
+                color: #1565C0;
+                border-radius: 99px;
+                font-size: 0.75rem;
+                font-weight: 700;
+                padding: 0.3rem 0.875rem;
+                text-decoration: none;
+                white-space: nowrap;
+                flex-shrink: 0;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                transition: opacity 0.15s;
+            "
+            onmouseover="this.style.opacity='0.85'"
+            onmouseout="this.style.opacity='1'"
+        >
+            Zelf installeren →
+        </a>
+
+        {{-- Close --}}
+        <button
+            @click="visible = false"
+            style="
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255,255,255,0.12);
+                border: 1px solid rgba(255,255,255,0.2);
+                cursor: pointer;
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                color: white;
+                font-size: 0.875rem;
+                line-height: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.15s;
+                flex-shrink: 0;
+            "
+            onmouseover="this.style.background='rgba(255,255,255,0.22)'"
+            onmouseout="this.style.background='rgba(255,255,255,0.12)'"
+            aria-label="Sluiten"
+        >×</button>
     </div>
 @endif
