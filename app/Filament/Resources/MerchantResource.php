@@ -115,7 +115,14 @@ class MerchantResource extends Resource
 
                 TextColumn::make('match_patterns')
                     ->label('Patronen')
-                    ->formatStateUsing(fn (?array $state) => $state ? implode(', ', $state) : '—')
+                    ->formatStateUsing(function ($state): string {
+                        if (! $state) {
+                            return '—';
+                        }
+                        $arr = is_array($state) ? $state : (json_decode($state, true) ?? []);
+
+                        return $arr ? implode(', ', $arr) : '—';
+                    })
                     ->wrap()
                     ->toggleable(),
 
