@@ -108,6 +108,16 @@
     background: #E8F1FE;
     color: #1E88E5;
     font-weight: 600;
+    border-radius: 0.5rem;
+}
+
+/* Voorkom dat een geneste actieve knop nog een eigen achtergrond+radius
+   tekent bovenop de pill — dat gaf zichtbare dubbele hoeken bij group-tabs
+   met chevron (label + dropdown-trigger als aparte buttons in dezelfde li). */
+.fi-topbar-nav-groups .fi-active .fi-topbar-item-btn,
+.fi-topbar-nav-groups [aria-current="page"] .fi-topbar-item-btn {
+    background: transparent;
+    border-radius: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
