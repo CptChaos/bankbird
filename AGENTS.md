@@ -145,6 +145,18 @@ The user has cloned the repo and is sitting in the project root. Verify:
 
 If not, ask the user where they cloned it.
 
+**Critical — clone command:** If you (the agent) are doing the clone yourself, or instructing the user, the clone command **must always** be:
+
+```bash
+git clone --single-branch --branch master --depth 1 https://github.com/AivionStudiosPlayground/bankbird.git
+```
+
+Never use a plain `git clone <url>` for an end-user install. The flags ensure:
+- `--single-branch --branch master`: only the stable release branch comes down — no `develop` or other work-in-progress branches end up on the user's machine.
+- `--depth 1`: no historical commits, smaller download.
+
+If the user already cloned the repo without these flags, that's fine — the working tree will be on `master` either way. Don't re-clone unless they explicitly ask.
+
 ### 1. Detect Laravel Herd
 
 Herd is the recommended runtime. It bundles PHP 8.4, Composer and Node, runs as a background service, and serves `*.test` domains automatically — eliminating "how do I start the app?" forever.

@@ -23,9 +23,11 @@ Download van [herd.laravel.com](https://herd.laravel.com/) en doorloop de instal
 **Stap 2 — Clone de repository**
 
 ```bash
-git clone https://github.com/AivionStudiosPlayground/bankbird.git
+git clone --single-branch --branch master --depth 1 https://github.com/AivionStudiosPlayground/bankbird.git
 cd bankbird
 ```
+
+> De vlaggen `--single-branch --branch master --depth 1` zorgen dat je alléén de stabiele install-versie binnenhaalt — geen ontwikkelbranches en geen oude history. Dit is verplicht voor een install.
 
 **Stap 3 — Vraag Claude (of Codex) de installatie te doen**
 

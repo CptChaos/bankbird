@@ -229,7 +229,7 @@ function copyPrompt() {
                         <div class="bb-dot" style="background:#27C93F;"></div>
                         <span style="margin-left:auto;font-size:0.6875rem;color:rgba(255,255,255,0.3);font-family:monospace;">bash</span>
                     </div>
-                    <pre><span class="tok-k">git</span> clone https://github.com/AivionStudiosPlayground/bankbird.git
+                    <pre><span class="tok-k">git</span> clone --single-branch --branch master --depth 1 https://github.com/AivionStudiosPlayground/bankbird.git
 <span class="tok-k">cd</span> bankbird</pre>
                 </div>
             </div>
