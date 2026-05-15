@@ -106,6 +106,17 @@ BankBird werkt standaard met SQLite (lokaal, geen server nodig). Voor online/mul
 3. Stel `APP_ENV=production` en een sterk `APP_KEY` in
 4. Draai achter een HTTPS-proxy (bijv. Nginx of [Laravel Cloud](https://cloud.laravel.com/))
 
+## Branches
+
+| Branch | Doel | Voor wie |
+|---|---|---|
+| **`master`** | Stabiele install-versie — **altijd** wat eindgebruikers clonen | Iedereen die BankBird wil draaien |
+| **`develop`** | Werk-in-uitvoering, draait op [dev.bankbird.app](https://dev.bankbird.app) | Aivion Studios — interne ontwikkeling |
+
+> ⚠️ **Installeer altijd vanaf `master`.** Gebruik de clone-vlaggen `--single-branch --branch master --depth 1` zoals hierboven; `develop` is publiek zichtbaar maar bevat WIP-features die nog niet stabiel zijn. Zet dat **nooit** in een productie-omgeving.
+
+De marketing-site ([bankbird.app](https://bankbird.app)) en de live demo ([demo.bankbird.app](https://demo.bankbird.app)) draaien vanuit een aparte repo en raken deze installatieflow niet.
+
 ## Licentie
 
 [GNU Affero General Public License v3.0](LICENSE) — open source, maar aanpassingen die je als dienst aanbiedt moet je ook open source maken.
