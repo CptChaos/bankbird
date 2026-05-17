@@ -144,7 +144,7 @@ return [
     | op GitHub (vX.Y.Z), hier zonder prefix.
     */
 
-    'version' => '2.1.0',
+    'version' => '2.1.1',
 
     'release_date' => '2026-05-17',
 

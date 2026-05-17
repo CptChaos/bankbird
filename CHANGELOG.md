@@ -10,6 +10,19 @@ Twee niveaus:
 
 ---
 
+## [2.1.1] - 2026-05-17
+
+Patch-release: garandeert dat een verse installatie altijd de Nederlandse standaard-merchants binnenkrijgt, ook wanneer een install-agent of gebruiker `php artisan migrate` zonder `--seed` draait.
+
+### Opgelost
+- **Merchants ontbraken bij verse install**: bij installaties waar de seeder niet of niet volledig draaide, kwam de standaard-merchantlijst (Albert Heijn, Jumbo, ING, Shell, Netflix, …) niet binnen en moest hij handmatig worden toegevoegd. Nu zorgt een idempotente migratie ervoor dat de defaults bij elke `migrate` worden gesynchroniseerd, zonder bestaande merchants te raken. (Publiek)
+
+### Technisch
+- `MerchantSeeder::sync()` toegevoegd als idempotente extractie van de seeder-run-logica.
+- Migratie `2026_05_17_120100_seed_default_merchants` roept `MerchantSeeder::sync()` aan; bestaande merchants blijven onaangeraakt via `firstOrCreate` op `normalized_name`.
+
+---
+
 ## [2.1.0] - 2026-05-17
 
 Kwaliteits-release met focus op beheer-gemak: handmatige merchants, een fors uitgebreide categorie-set, een nieuwe transactie-detailpagina en een compactere globale zoekfunctie met "alle resultaten"-link.

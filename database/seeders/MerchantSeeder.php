@@ -17,6 +17,19 @@ class MerchantSeeder extends Seeder
      */
     public function run(): array
     {
+        return self::sync();
+    }
+
+    /**
+     * Idempotente sync van de standaard-merchants. Wordt vanuit de seeder
+     * én vanuit een migratie aangeroepen, zodat een install altijd de
+     * Nederlandse merchant-set krijgt — ook als de install-agent vergeet
+     * `--seed` mee te geven aan `php artisan migrate`.
+     *
+     * @return array<string, Merchant>
+     */
+    public static function sync(): array
+    {
         $categories = Category::all()->keyBy('name');
 
         $definitions = [
